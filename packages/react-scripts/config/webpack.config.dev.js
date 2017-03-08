@@ -118,14 +118,15 @@ module.exports = {
         enforce: 'pre',
         use: [
           {
-            // @remove-on-eject-begin
-            // Point ESLint to our predefined config.
             options: {
+              packageJsonPath: paths.appPackageJson,
+              // @remove-on-eject-begin
+              // Point ESLint to our predefined config.
               configFile: path.join(__dirname, '../eslintrc'),
               useEslintrc: false,
+              // @remove-on-eject-end
             },
-            // @remove-on-eject-end
-            loader: 'eslint-loader',
+            loader: 'react-dev-utils/eslint-loader-watch-package-json',
           },
         ],
         include: paths.appSrc,
